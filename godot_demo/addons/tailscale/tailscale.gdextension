@@ -1,0 +1,6 @@
+[configuration]
+entry_symbol = "tailscale_library_init"
+compatibility_minimum = "4.6"
+
+[libraries]
+linux.debug.x86_64 = "res://addons/tailscale/libtailscale_gdextension.so"

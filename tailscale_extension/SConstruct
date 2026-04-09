@@ -1,0 +1,47 @@
+import os
+import sys
+
+# Environment setup
+env = Environment(ENV=os.environ)
+
+# Platform detection
+platform = "linux"
+
+# Paths
+godot_cpp_path = "../godot-cpp"
+libtailscale_path = "../libtailscale"
+
+# Find the correct godot-headers path
+godot_headers_path = f"{godot_cpp_path}/godot-headers"
+if not os.path.exists(godot_headers_path):
+    godot_headers_path = f"{godot_cpp_path}/thirdparty/godot-headers"
+
+# Compiler flags
+cxx_flags = ["-std=c++17", "-fPIC", "-g", "-O0"]
+env.Append(CCFLAGS=cxx_flags)
+
+# Include paths - add both possible locations
+env.Append(CPPPATH=[
+    f"{godot_cpp_path}/include",
+    f"{godot_cpp_path}/gen/include",
+    godot_headers_path,
+    libtailscale_path,
+    "src"
+])
+
+# Libraries
+env.Append(LIBPATH=[f"{godot_cpp_path}/bin", libtailscale_path])
+env.Append(LIBS=[
+    f"godot-cpp.{platform}.template_debug.x86_64",
+    "tailscale",
+    "pthread"
+])
+
+# Build the shared library
+sources = Glob("src/*.cpp")
+library = env.SharedLibrary(
+    target="bin/libtailscale_gdextension",
+    source=sources
+)
+
+Default(library)
