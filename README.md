@@ -1,3 +1,5 @@
+⚠️ This project currently uses placeholder IP generation for testing purposes.
+
 # Godot Tailscale P2P
 
 A custom GDExtension that provides **P2P multiplayer networking** for Godot 4 using Tailscale. Connect players directly across the internet without dedicated servers.
