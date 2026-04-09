@@ -1,4 +1,4 @@
-⚠️ This project currently uses placeholder IP generation for testing purposes. Also experimental not working fully yet
+⚠️ This project currently uses placeholder IP generation for testing purposes. Also experimental
 
 # Godot Tailscale P2P
 
