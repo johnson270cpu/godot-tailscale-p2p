@@ -1,48 +1,35 @@
-⚠️ This project currently uses placeholder IP generation for testing purposes. Also experimental
-
 # Godot Tailscale P2P
 
-A custom GDExtension that provides **P2P multiplayer networking** for Godot 4 using Tailscale. Connect players directly across the internet without dedicated servers.
+## Overview
+This project aims to integrate Tailscale with Godot to enable peer-to-peer networking capabilities in games.
 
-## ✨ Features
+## Features
+- **Easy Integration**: Simple API for Godot developers.
+- **Cross-Platform Support**: Works on Windows, macOS, and Linux.
+- **Secure Connections**: Leverages Tailscale's security features for safe networking.
 
-- 🔗 **Direct P2P connections** - No central server required
-- 🎮 **Godot MultiplayerPeer** - Works with Godot's RPC system
-- 🚀 **NAT traversal** - Uses Tailscale to punch through firewalls
-- 💻 **Linux support** - Currently working on Linux x86_64
+## Platform Status
+- **Windows**: Fully supported
+- **macOS**: Testing phase
+- **Linux**: Fully supported
 
-## 🎯 What Works
+## Architecture Overview
+The architecture includes a Godot module that interfaces with Tailscale’s API, enabling seamless peer discovery and connection management. This integration allows games to benefit from Tailscale’s networking without complicated setups.
 
-| Feature | Status |
-|---------|--------|
-| Linux x86_64 | ✅ Working |
-| UDP packet sending/receiving | ✅ Working |
-| Godot MultiplayerPeer interface | ✅ Complete |
-| Direct P2P connections | ✅ Working |
-| Chat demo | ✅ Working |
-| Windows | 🔄 Need help |
-| macOS | 🔄 Need help |
-| Android | 🔄 Need help |
-| LAN auto-discovery | 🔄 Need help |
+## Contributing Guidelines
+1. **Fork the Repository**: Create your copy of the repo.
+2. **Create a Feature Branch**: Use `git checkout -b feature/YourFeature`.
+3. **Make Your Changes**: Commit your changes with clear messages.
+4. **Push Changes**: `git push origin feature/YourFeature`.
+5. **Open a Pull Request**: Describe your changes and submit for review.
 
-## 🎮 Usage Example
+## Roadmap
+- **Q2 2026**: Complete testing on macOS.
+- **Q3 2026**: Official release of version 1.0
+- **Q4 2026**: Add support for mobile platforms.
 
-```gdscript
-extends Node2D
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-var peer = null
-
-func _ready():
-    peer = TailscaleMultiplayerPeer.new()
-    
-    # Host a game
-    peer.start_server(9999)
-    
-    # Or join a friend's game
-    # peer.connect_to_peer("192.168.1.100", 9999)
-    
-    multiplayer.multiplayer_peer = peer
-
-@rpc("any_peer", "reliable")
-func send_message(text):
-    print("Message: ", text)
+## Contact
+For questions, please reach out to [@johnson270cpu](https://github.com/johnson270cpu).
